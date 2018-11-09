@@ -2,14 +2,10 @@
   "name": "ecomplus-procedures",
   "version": "0.1.0",
   "description": "Handle the most common E-Com Plus Store API procedures",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
-    "test": "node ./main.js"
+    "test": "node ./index.js"
   },
   "author": "E-Com Club",
-  "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "rest-auto-router": "3.x"
-  }
+  "license": "GPL-3.0"
 }
