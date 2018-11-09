@@ -20,7 +20,7 @@ const conf = {
     // request timeout in ms
     'timeout': process.env.PROXY_TIMEOUT || 30000,
     // X-Authentication header
-    'auth': process.env.PROXY_AUTHENTICATION || 'FnN3sT4'
+    'auth': process.env.PROXY_AUTH || 'FnN3sT4'
   },
   // default error messages
   // used when messages are null
