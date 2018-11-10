@@ -11,14 +11,14 @@ const conf = {
   'path': process.cwd() + '/routes/',
   // listened tcp port
   // should be opened for localhost only
-  'port': process.env.PROXY_PORT || 3000,
+  'port': parseInt(process.env.PROXY_PORT, 10) || 3000,
   // part of the URL to be deleted in routing
   // like RewriteBase of Apache Httpd mod_rewrite
   'base_uri': process.env.PROXY_BASE_URI || '/api/v1/',
   // must be configured in common with proxy server
   'proxy': {
     // request timeout in ms
-    'timeout': process.env.PROXY_TIMEOUT || 30000,
+    'timeout': parseInt(process.env.PROXY_TIMEOUT, 10) || 30000,
     // X-Authentication header
     'auth': process.env.PROXY_AUTH || 'FnN3sT4'
   },
