@@ -7,6 +7,6 @@ const POST = (id, meta, body, respond) => {
   respond('Hello')
 }
 
-export default {
+module.exports = {
   POST
 }
