@@ -11,7 +11,7 @@
   "private": true,
   "dependencies": {
     "rest-auto-router": "3.x",
-    "console-files": "1.x",
+    "console-files": "2.x",
     "ecomplus-app-auth": "1.x",
     "sqlite3": "4.x",
     "axios": "0.x"
