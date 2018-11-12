@@ -2,22 +2,16 @@
 
 // log on files
 const logger = require('console-files')
+// https://www.npmjs.com/package/rest-auto-router
+const restAutoRouter = require('rest-auto-router')
 
 // handle app authentication to Store API
 // https://github.com/ecomclub/ecomplus-auth-node
 const dbFilename = process.env.DB_FILENAME || process.cwd() + '/cpm.db'
 const apiAuth = require('ecomplus-app-auth')(dbFilename)
 
-console.log(apiAuth)
-apiAuth.catch(err => {
-  logger.error(err)
-})
-
-.then(auth => {
+apiAuth.then(auth => {
   // setup REST API server
-  // https://www.npmjs.com/package/rest-auto-router
-  const restAutoRouter = require('rest-auto-router')
-
   // web server configuration
   const conf = {
     // path to routes folder
@@ -72,4 +66,10 @@ apiAuth.catch(err => {
 
   // debug
   logger.log('Web application running on port ' + conf.port)
+})
+
+.catch(err => {
+  logger.error(err)
+  // destroy Node process while Store API auth cannot be handled
+  process.exit(0)
 })
