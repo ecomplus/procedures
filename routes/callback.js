@@ -1,11 +1,14 @@
 'use strict'
 
 // log on files
-// const logger = require('console-files')
+const logger = require('console-files')
 
 const POST = (id, meta, body, respond, storeId, { handleCallback }) => {
+  // debuging callback request
+  logger.log('callback')
   // Store API authentication callback
   handleCallback(storeId, body).catch(err => {
+    logger.error(err)
     respond({}, null, 500, 'cpm_callback_error', err.message)
   })
 
