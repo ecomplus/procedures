@@ -3,10 +3,10 @@
 // log on files
 // const logger = require('console-files')
 
-const POST = (id, meta, body, respond) => {
+const GET = (id, meta, body, respond) => {
   respond('Hello')
 }
 
 module.exports = {
-  POST
+  GET
 }

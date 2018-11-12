@@ -4,6 +4,9 @@
 const logger = require('console-files')
 // https://www.npmjs.com/package/rest-auto-router
 const restAutoRouter = require('rest-auto-router')
+// handle app authentication to Store API
+// https://github.com/ecomclub/ecomplus-auth-node
+const apiAuth = require('ecomplus-app-auth')(process.cwd() + '/cpm.db')
 
 // web server configuration
 const conf = {
@@ -36,26 +39,28 @@ const conf = {
   'vary_fields': false
 }
 
-let middleware = (id, meta, body, respond, req, res, resource, verb, endpoint) => {
-  // function called before endpoints
-  // authentications and other prerequisites when necessary
-  // requires store ID
-  let storeId = req.headers['x-store-id']
-  if (typeof storeId === 'string') {
-    storeId = parseInt(storeId, 10)
+apiAuth.then(auth => {
+  const middleware = (id, meta, body, respond, req, res, resource, verb, endpoint) => {
+    // function called before endpoints
+    // authentications and other prerequisites when necessary
+    // requires store ID
+    let storeId = req.headers['x-store-id']
+    if (typeof storeId === 'string') {
+      storeId = parseInt(storeId, 10)
+    }
+    if (typeof storeId !== 'number' || isNaN(storeId) || storeId < 0) {
+      // invalid ID string
+      respond({}, null, 403, 121, 'Undefined or invalid Store ID')
+    } else {
+      // pass to endpoint
+      endpoint(id, meta, body, respond, storeId, auth)
+    }
   }
-  if (typeof storeId !== 'number' || isNaN(storeId) || storeId < 0) {
-    // invalid ID string
-    respond({}, null, 403, 121, 'Undefined or invalid Store ID')
-  } else {
-    // pass to endpoint
-    endpoint(id, meta, body, respond, storeId)
-  }
-}
 
-// start web application
-// recieve requests from Nginx by reverse proxy
-restAutoRouter(conf, middleware, logger)
+  // start web application
+  // recieve requests from Nginx by reverse proxy
+  restAutoRouter(conf, middleware, logger)
 
-// debug
-logger.log('Web application running on port ' + conf.port)
+  // debug
+  logger.log('Web application running on port ' + conf.port)
+})
