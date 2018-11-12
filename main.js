@@ -8,7 +8,8 @@
  * @author E-Com Club
  */
 
-// debug errors to files
+// debug errors in files
+// require logger module first of any code
 require('console-files')
 
 // web application
