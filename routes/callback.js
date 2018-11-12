@@ -4,8 +4,6 @@
 const logger = require('console-files')
 
 const POST = (id, meta, body, respond, storeId, { handleCallback }) => {
-  // debuging callback request
-  logger.log('callback')
   // Store API authentication callback
   handleCallback(storeId, body).catch(err => {
     logger.error(err)
