@@ -6,7 +6,10 @@ const logger = require('console-files')
 const POST = (id, meta, body, respond, storeId, { handleCallback }) => {
   // Store API authentication callback
   handleCallback(storeId, body).catch(err => {
-    logger.error(err)
+    if (err.code) {
+      // debug SQLite errors
+      logger.error(err)
+    }
     respond({}, null, 500, 'cpm_callback_error', err.message)
   })
 
