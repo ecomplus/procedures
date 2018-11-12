@@ -6,7 +6,10 @@ const logger = require('console-files')
 // handle app authentication to Store API
 // https://github.com/ecomclub/ecomplus-auth-node
 const dbFilename = process.env.DB_FILENAME || process.cwd() + '/cpm.db'
-require('ecomplus-app-auth')(dbFilename).catch(err => {
+const apiAuth = require('ecomplus-app-auth')(dbFilename)
+
+console.log(apiAuth)
+apiAuth.catch(err => {
   logger.error(err)
 })
 
