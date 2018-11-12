@@ -6,7 +6,7 @@ const logger = require('console-files')
 const POST = (id, meta, body, respond, storeId, { handleCallback }) => {
   // Store API authentication callback
   handleCallback(storeId, body).catch(err => {
-    if (err.code) {
+    if (typeof err.code === 'string' && !err.code.startsWith('SQLITE_CONSTRAINT')) {
       // debug SQLite errors
       logger.error(err)
     }
