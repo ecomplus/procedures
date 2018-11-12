@@ -8,6 +8,9 @@
  * @author E-Com Club
  */
 
+// debug errors to files
+require('console-files')
+
 // web application
 // recieve requests from Nginx by reverse proxy
 require('./bin/web.js')
