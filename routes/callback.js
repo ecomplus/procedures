@@ -3,9 +3,9 @@
 // log on files
 const logger = require('console-files')
 
-const POST = (id, meta, body, respond, storeId, apiMethods) => {
+const POST = (id, meta, body, respond, storeId, authMethods) => {
   // Store API authentication callback
-  apiMethods.handleCallback(storeId, body).then(({ isNew, authenticationId }) => {
+  authMethods.handleCallback(storeId, body).then(({ isNew, authenticationId }) => {
     // just respond first
     respond(null, null, 204)
 
@@ -14,8 +14,8 @@ const POST = (id, meta, body, respond, storeId, apiMethods) => {
       // not a new app installed
       // authentication done
       // create procedures if not already created
-      let auth = apiMethods.getAuth(storeId, authenticationId)
-      apiMethods.apiRequest(storeId, '/procedures.json', 'POST', {}, auth)
+      let auth = authMethods.getAuth(storeId, authenticationId)
+      authMethods.apiRequest(storeId, '/procedures.json', 'POST', {}, auth)
     }
   })
 
