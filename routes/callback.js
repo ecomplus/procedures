@@ -3,9 +3,9 @@
 // log on files
 const logger = require('console-files')
 
-const POST = (id, meta, body, respond, storeId, { handleCallback }) => {
+const POST = (id, meta, body, respond, storeId, apiMethods) => {
   // Store API authentication callback
-  handleCallback(storeId, body).catch(err => {
+  apiMethods.handleCallback(storeId, body).catch(err => {
     if (typeof err.code === 'string' && !err.code.startsWith('SQLITE_CONSTRAINT')) {
       // debug SQLite errors
       logger.error(err)
@@ -21,6 +21,8 @@ const POST = (id, meta, body, respond, storeId, { handleCallback }) => {
       // not a new app installed
       // authentication done
       // create procedures if not already created
+      let auth = apiMethods.getAuth(storeId, body.my_id)
+      apiMethods.apiRequest(storeId, '/procedures.json', 'POST', {}, auth)
     }
   })
 }

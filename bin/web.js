@@ -7,7 +7,7 @@ const restAutoRouter = require('rest-auto-router')
 // handle app authentication to Store API
 const apiAuth = require('./../lib/Auth')
 
-apiAuth.then(auth => {
+apiAuth.then(authMethods => {
   // setup REST API server
   // web server configuration
   const conf = {
@@ -53,7 +53,7 @@ apiAuth.then(auth => {
       respond({}, null, 403, 121, 'Undefined or invalid Store ID')
     } else {
       // pass to endpoint
-      endpoint(id, meta, body, respond, storeId, auth)
+      endpoint(id, meta, body, respond, storeId, authMethods)
     }
   }
 
