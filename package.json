@@ -12,7 +12,7 @@
   "dependencies": {
     "rest-auto-router": "3.x",
     "console-files": "2.x",
-    "ecomplus-app-auth": "1.x",
+    "ecomplus-app-auth": "2.x",
     "sqlite3": "4.x"
   }
 }
