@@ -4,11 +4,8 @@
 const logger = require('console-files')
 // https://www.npmjs.com/package/rest-auto-router
 const restAutoRouter = require('rest-auto-router')
-
 // handle app authentication to Store API
-// https://github.com/ecomclub/ecomplus-auth-node
-const dbFilename = process.env.DB_FILENAME || process.cwd() + '/cpm.db'
-const apiAuth = require('ecomplus-app-auth')(dbFilename)
+const apiAuth = require('./../lib/Auth')
 
 apiAuth.then(auth => {
   // setup REST API server
