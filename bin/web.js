@@ -5,7 +5,7 @@ const logger = require('console-files')
 // https://www.npmjs.com/package/rest-auto-router
 const restAutoRouter = require('rest-auto-router')
 // handle app authentication to Store API
-const apiAuth = require('./../lib/Auth')
+const apiAuth = require('ecomplus-app-auth')
 
 apiAuth.then(appSdk => {
   // setup REST API server
@@ -63,10 +63,4 @@ apiAuth.then(appSdk => {
 
   // debug
   logger.log('Web application running on port ' + conf.port)
-})
-
-.catch(err => {
-  logger.error(err)
-  // destroy Node process while Store API auth cannot be handled
-  process.exit(0)
 })
