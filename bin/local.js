@@ -17,6 +17,8 @@ ecomAuth.promise.then(appSdk => {
 
 .catch(err => {
   logger.error(err)
-  // destroy Node process while Store API auth cannot be handled
-  process.exit(1)
+  setTimeout(() => {
+    // destroy Node process while Store API auth cannot be handled
+    process.exit(1)
+  }, 1000)
 })
