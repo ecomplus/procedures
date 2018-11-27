@@ -4,18 +4,18 @@
 const logger = require('console-files')
 // handle app authentication to Store API
 // https://github.com/ecomclub/ecomplus-app-sdk
-const ecomAuth = require('ecomplus-app-sdk')
+const { ecomAuth } = require('ecomplus-app-sdk')
 
-ecomAuth.promise.then(appSdk => {
+ecomAuth.then(appSdk => {
   // configure setup for stores
   // list of procedures to save
-  const procedures = require('./../lib/StoreAPi/Procedures')
+  const procedures = require('./../lib/StoreApi/Procedures')
   appSdk.configureSetup(procedures, ({ storeId }) => {
     logger.log('Setup store #' + storeId)
   })
 })
 
-.catch(err => {
+ecomAuth.catch(err => {
   logger.error(err)
   setTimeout(() => {
     // destroy Node process while Store API auth cannot be handled

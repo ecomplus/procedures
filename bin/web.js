@@ -5,9 +5,9 @@ const logger = require('console-files')
 // https://www.npmjs.com/package/rest-auto-router
 const restAutoRouter = require('rest-auto-router')
 // handle app authentication to Store API
-const ecomAuth = require('ecomplus-app-sdk')
+const { ecomAuth } = require('ecomplus-app-sdk')
 
-ecomAuth.promise.then(appSdk => {
+ecomAuth.then(appSdk => {
   // setup REST API server
   // web server configuration
   const conf = {
