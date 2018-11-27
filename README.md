@@ -7,6 +7,8 @@
 App to handle the most common E-Com Plus Store API procedures
 
 ### Environment variables sample
+Variable              | Value
+---                   | ---
 `LOGGER_OUTPUT`       | `~/app/log/logger.out`
 `LOGGER_ERRORS`       | `~/app/log/logger.err`
 `LOGGER_FATAL_ERRORS` | `~/app/log/_stderr`
