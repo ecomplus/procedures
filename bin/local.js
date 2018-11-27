@@ -14,7 +14,6 @@ ecomAuth.then(appSdk => {
     if (!err) {
       logger.log('Setup store #' + storeId)
     } else {
-      logger.log('Cannot configure stores setup')
       logger.error(err)
     }
   })
