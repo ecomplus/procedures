@@ -10,8 +10,12 @@ ecomAuth.then(appSdk => {
   // configure setup for stores
   // list of procedures to save
   const procedures = require('./../lib/StoreApi/Procedures')
-  appSdk.configureSetup(procedures, ({ storeId }) => {
-    logger.log('Setup store #' + storeId)
+  appSdk.configureSetup(procedures, (err, { storeId }) => {
+    if (!err) {
+      logger.log('Setup store #' + storeId)
+    } else {
+      logger.error(err)
+    }
   })
 })
 
