@@ -3,8 +3,8 @@
 // log on files
 const logger = require('console-files')
 // handle app authentication to Store API
-// https://github.com/ecomclub/ecomplus-auth-node
-const apiAuth = require('ecomplus-app-auth')
+// https://github.com/ecomclub/ecomplus-app-sdk
+const apiAuth = require('ecomplus-app-sdk').promise
 
 apiAuth.catch(err => {
   logger.error(err)
