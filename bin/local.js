@@ -4,9 +4,9 @@
 const logger = require('console-files')
 // handle app authentication to Store API
 // https://github.com/ecomclub/ecomplus-app-sdk
-const apiAuth = require('ecomplus-app-sdk').promise
+const ecomAuth = require('ecomplus-app-sdk')
 
-apiAuth.then(appSdk => {
+ecomAuth.promise.then(appSdk => {
   // configure setup for stores
   // list of procedures to save
   const procedures = require('./../lib/StoreAPi/Procedures')
