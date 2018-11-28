@@ -5,18 +5,9 @@ const logger = require('console-files')
 
 const POST = (id, meta, body, respond, storeId, appSdk) => {
   // Store API authentication callback
-  appSdk.handleCallback(storeId, body).then(({ isNew, authenticationId }) => {
+  appSdk.handleCallback(storeId, body).then(() => {
     // just respond first
     respond(null, null, 204)
-
-    // handle successful authentication flux
-    if (!isNew) {
-      // not a new app installed
-      // authentication done
-      // create procedures if not already created
-      let auth = appSdk.getAuth(storeId, authenticationId)
-      appSdk.apiRequest(storeId, '/procedures.json', 'POST', {}, auth)
-    }
   })
 
   .catch(err => {
