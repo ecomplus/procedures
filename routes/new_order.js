@@ -5,6 +5,7 @@
 
 const POST = (id, meta, body, respond, storeId, appSdk) => {
   console.log(body)
+  respond({})
 }
 
 module.exports = {
