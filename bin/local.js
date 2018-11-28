@@ -13,7 +13,7 @@ ecomAuth.then(appSdk => {
   appSdk.configureSetup(procedures, (err, { storeId }) => {
     if (!err) {
       logger.log('Setup store #' + storeId)
-    } else {
+    } else if (!err.appAuthRemoved) {
       logger.error(err)
     }
   })
