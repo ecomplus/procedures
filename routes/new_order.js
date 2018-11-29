@@ -1,7 +1,12 @@
 'use strict'
 
 // log on files
-const logger = require('console-files')
+// const logger = require('console-files')
+// treat error and respond
+const errorResponse = require('./#error')()
+
+// procedure functions
+const orderBuyers = require('./../lib/StoreApi/Orders/Buyers')
 
 const POST = (id, meta, body, respond, storeId, appSdk) => {
   // logger.log(body)
@@ -9,29 +14,22 @@ const POST = (id, meta, body, respond, storeId, appSdk) => {
   if (orderId) {
     // GET order from API
     let url = '/orders/' + orderId + '.json'
-    appSdk.apiRequest(storeId, url).then(order => {
-      // read configured options from app hidden data
+    appSdk.apiRequest(storeId, url).then(({ response, auth }) => {
+      // https://developers.e-com.plus/docs/api/#/store/orders/orders
+      let order = response.data
+      // add order to respective customers
+      orderBuyers.add({ appSdk, storeId, auth }, order)
+      // end current request with success
+      respond(null, null, 204)
     })
 
     .catch(err => {
-      if (err.response) {
-        let statusCode = err.response.status
-        if (statusCode >= 500 && statusCode < 600) {
-          // return error code to receive webhook again further
-          respond({}, null, statusCode, 'get_order_error_' + err.code, err.message)
-        } else {
-          // not found ?
-          // ignore
-          respond(err.message)
-        }
-      } else {
-        logger.error(err)
-        respond({}, null, 500, 'get_order_error', err.message)
-      }
+      errorResponse(err, respond)
     })
+  } else {
+    // nothing to do
+    respond(0)
   }
-
-  respond({})
 }
 
 module.exports = {
