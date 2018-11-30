@@ -1,0 +1,109 @@
+{
+  "brands": [
+    "GET",
+    "PATCH"
+  ],
+  "brands/metafields": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "carts": [
+    "GET",
+    "PATCH"
+  ],
+  "carts/metafields": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "categories": [
+    "GET",
+    "PATCH"
+  ],
+  "categories/metafields": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "collections": [
+    "GET",
+    "PATCH"
+  ],
+  "collections/metafields": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "customers": [
+    "GET",
+    "PATCH"
+  ],
+  "customers/metafields": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "customers/orders": [
+    "POST",
+    "DELETE"
+  ],
+  "grids": [
+    "GET",
+    "PATCH"
+  ],
+  "grids/metafields": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "orders": [
+    "GET",
+    "PATCH"
+  ],
+  "orders/metafields": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "orders/fullfilments": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "orders/payments_history": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "procedures": [
+    "POST"
+  ],
+  "products": [
+    "GET",
+    "PATCH"
+  ],
+  "products/metafields": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "products/inventory_records": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "products/price_change_records": [
+    "GET",
+    "POST",
+    "DELETE"
+  ],
+  "products/quantity": [
+    "GET",
+    "PUT"
+  ],
+  "products/variations/quantity": [
+    "GET",
+    "PUT"
+  ]
+}
