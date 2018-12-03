@@ -6,6 +6,9 @@ const logger = require('console-files')
 const restAutoRouter = require('rest-auto-router')
 // handle app authentication to Store API
 const { ecomAuth } = require('ecomplus-app-sdk')
+// receive mutation requests from E-Com Plus only
+// validate by IP address
+const ecomServerIps = [ '139.59.95.252', '159.203.20.142' ]
 
 ecomAuth.then(appSdk => {
   // setup REST API server
@@ -50,8 +53,15 @@ ecomAuth.then(appSdk => {
     }
     if (typeof storeId !== 'number' || isNaN(storeId) || storeId < 0) {
       // invalid ID string
-      respond({}, null, 403, 121, 'Undefined or invalid Store ID')
+      respond({}, null, 403, 191, 'Undefined or invalid Store ID')
     } else {
+      if (verb !== 'GET' && process.env.NODE_ENV === 'production') {
+        // check if request comes from E-Com Plus Webhooks server
+        if (ecomServerIps.indexOf(req.headers['x-real-ip']) === -1) {
+          respond({}, null, 403, 192, 'Who are you? Unauthorized IP address')
+          return
+        }
+      }
       // pass to endpoint
       endpoint(id, meta, body, respond, storeId, appSdk)
     }
