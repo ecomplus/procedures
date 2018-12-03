@@ -13,7 +13,7 @@ const POST = (id, meta, body, respond, storeId, appSdk) => {
   let orderId = body.inserted_id
   if (orderId) {
     // GET order from API
-    let url = '/orders/' + orderId + '.json'
+    const url = '/orders/' + orderId + '.json'
     appSdk.apiRequest(storeId, url).then(({ response, auth }) => {
       // https://developers.e-com.plus/docs/api/#/store/orders/orders
       let order = response.data
