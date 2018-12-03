@@ -13,6 +13,6 @@
     "rest-auto-router": "3.x",
     "console-files": "2.x",
     "ecomplus-app-sdk": "1.x",
-    "sqlite3": "4.x"
+    "mysql": "2.x"
   }
 }
