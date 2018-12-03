@@ -6,7 +6,7 @@
 const errorResponse = require('./#error')()
 
 // procedure functions
-const orderBuyers = require('./../lib/StoreApi/Orders/Buyers')
+const orderBuyers = require('./../lib/Api/Orders/Buyers')
 
 const POST = (id, meta, body, respond, storeId, appSdk) => {
   // logger.log(body)
