@@ -5,10 +5,8 @@ const logger = require('console-files')
 // https://www.npmjs.com/package/rest-auto-router
 const restAutoRouter = require('rest-auto-router')
 // handle app authentication to Store API
-const { ecomAuth } = require('ecomplus-app-sdk')
-// receive mutation requests from E-Com Plus only
-// validate by IP address
-const ecomServerIps = [ '139.59.95.252', '159.203.20.142' ]
+// validate by IP address to receive mutation requests from E-Com Plus only
+const { ecomAuth, ecomServerIps } = require('ecomplus-app-sdk')
 
 ecomAuth.then(appSdk => {
   // setup REST API server
