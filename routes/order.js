@@ -18,6 +18,7 @@ const POST = (id, meta, body, respond, storeId, appSdk) => {
     appSdk.apiRequest(storeId, url).then(({ response, auth }) => {
       let order = response.data
       const client = { appSdk, storeId, auth }
+      let resCode = 1
 
       // check trigger info to proceed with functions
       switch (body.method) {
@@ -26,8 +27,7 @@ const POST = (id, meta, body, respond, storeId, appSdk) => {
             // new order
             // add order to respective customers
             Buyers.add(client, order)
-            // end current request with success
-            return respond(101)
+            resCode = 101
           }
           break
 
@@ -37,7 +37,7 @@ const POST = (id, meta, body, respond, storeId, appSdk) => {
             if (body.fields.indexOf('buyers')) {
               Buyers.add(client, order)
             }
-            return respond(102)
+            resCode = 102
           }
           break
 
@@ -45,12 +45,12 @@ const POST = (id, meta, body, respond, storeId, appSdk) => {
           if (!body.subresource) {
             // order reseted
             Buyers.remove(client, order).then(Buyers.add)
-            return respond(103)
+            resCode = 103
           }
           break
       }
-      // unexpected
-      respond(1)
+      // end current request with success
+      respond(resCode)
     })
 
     .catch(err => {
