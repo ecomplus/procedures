@@ -24,44 +24,62 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
       // check trigger method to proceed with functions
       switch (trigger.method) {
         case 'POST':
-          // new order
+          // new order or nested objects subresource
+          // same handler
+          // check for new order items and buyers
           ItemsAdd(client, object)
             .then(BuyersAdd)
           resCode = 101
           break
 
         case 'PATCH':
-          // order partially edited
-          BuyersRemove(client, object)
-            .then(BuyersAdd)
-            .then(ItemsRemove)
-            .then(ItemsAdd)
-          resCode = 102
+          if (!trigger.subresource) {
+            // order partially edited
+            BuyersRemove(client, object)
+              .then(BuyersAdd)
+              .then(ItemsRemove)
+              .then(ItemsAdd)
+            resCode = 102
+          } else {
+            // check for specific order item partially edited
+            // ignore specific buyer edition if any (nothing to do)
+            ItemsRemove(client, object)
+              .then(ItemsAdd)
+            resCode = 103
+          }
           break
 
         case 'PUT':
-          // entire order reseted
-          // removeAll = true
-          BuyersRemove(client, object, true)
-            .then(BuyersAdd)
-            .then(ItemsRemove)
-            .then(ItemsAdd)
-          resCode = 103
+          if (!trigger.subresource) {
+            // entire order reseted
+            // removeAll = true
+            BuyersRemove(client, object, true)
+              .then(BuyersAdd)
+              .then(ItemsRemove)
+              .then(ItemsAdd)
+            resCode = 104
+          }
           break
 
         case 'DELETE':
-          // order removed
-          // removeAll = true
-          BuyersRemove(client, object, true)
-            .then(ItemsRemove)
-          resCode = 104
+          if (!trigger.subresource) {
+            // order removed
+            // removeAll = true
+            BuyersRemove(client, object, true)
+              .then(ItemsRemove)
+            resCode = 105
+          } else {
+            // check for specific order item or buyer removed
+            BuyersRemove(client, object)
+              .then(ItemsRemove)
+            resCode = 106
+          }
           break
       }
+
       // end current request with success
       respond(resCode)
-    })
-
-    .catch(err => {
+    }).catch(err => {
       errorResponse(err, respond)
     })
   } else {
