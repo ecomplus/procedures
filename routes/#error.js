@@ -27,6 +27,8 @@ const errorResponse = () => {
         // ignore
         respond(message)
       }
+    } else if (err.appWithoutAuth) {
+      respond({}, null, 503, label + '_without_auth', message)
     } else {
       logger.error(err)
       respond({}, null, 500, label + '_error', message)

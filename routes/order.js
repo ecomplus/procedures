@@ -4,49 +4,57 @@
 // const logger = require('console-files')
 // treat error and respond
 const errorResponse = require('./#error')()
-// procedure functions
-const Buyers = require('./../lib/Api/Orders/Buyers')
+// parse trigger body
+const triggerParse = require(process.cwd() + '/lib/Api/TriggerParse')
 
-const POST = (id, meta, body, respond, storeId, appSdk) => {
-  // treat trigger body
-  // https://developers.e-com.plus/docs/api/#/store/triggers/triggers
-  // logger.log(body)
-  let orderId = body.resource_id || body.inserted_id
-  if (orderId) {
-    // GET order from API
-    const url = '/orders/' + orderId + '.json'
-    appSdk.apiRequest(storeId, url).then(({ response, auth }) => {
-      let order = response.data
+// procedure functions
+const BuyersAdd = require(process.cwd() + '/lib/Api/Orders/Buyers/Add')
+const BuyersRemove = require(process.cwd() + '/lib/Api/Orders/Buyers/Remove')
+const ItemsAdd = require(process.cwd() + '/lib/Api/Orders/Items/Add')
+const ItemsRemove = require(process.cwd() + '/lib/Api/Orders/Items/Remove')
+
+const POST = (id, meta, trigger, respond, storeId, appSdk) => {
+  const { object, objectId } = triggerParse(trigger)
+  if (objectId) {
+    // get authentication tokens
+    appSdk.getAuth(storeId).then(auth => {
       const client = { appSdk, storeId, auth }
       let resCode = 1
 
-      // check trigger info to proceed with functions
-      switch (body.method) {
+      // check trigger method to proceed with functions
+      switch (trigger.method) {
         case 'POST':
-          if (!body.subresource) {
-            // new order
-            // add order to respective customers
-            Buyers.add(client, order)
-            resCode = 101
-          }
+          // new order
+          ItemsAdd(client, object)
+            .then(BuyersAdd)
+          resCode = 101
           break
 
         case 'PATCH':
-          if (!body.subresource) {
-            // order edited
-            if (body.fields.indexOf('buyers')) {
-              Buyers.add(client, order)
-            }
-            resCode = 102
-          }
+          // order partially edited
+          BuyersRemove(client, object)
+            .then(BuyersAdd)
+            .then(ItemsRemove)
+            .then(ItemsAdd)
+          resCode = 102
           break
 
         case 'PUT':
-          if (!body.subresource) {
-            // order reseted
-            Buyers.remove(client, order).then(Buyers.add)
-            resCode = 103
-          }
+          // entire order reseted
+          // removeAll = true
+          BuyersRemove(client, object, true)
+            .then(BuyersAdd)
+            .then(ItemsRemove)
+            .then(ItemsAdd)
+          resCode = 103
+          break
+
+        case 'DELETE':
+          // order removed
+          // removeAll = true
+          BuyersRemove(client, object, true)
+            .then(ItemsRemove)
+          resCode = 104
           break
       }
       // end current request with success
@@ -54,18 +62,7 @@ const POST = (id, meta, body, respond, storeId, appSdk) => {
     })
 
     .catch(err => {
-      if (body.method === 'DELETE' && err.status === 404) {
-        // order deleted
-        let order = {
-          _id: orderId
-        }
-        let { auth } = err
-        Buyers.remove({ appSdk, storeId, auth }, order)
-        // end current request with success
-        respond(111)
-      } else {
-        errorResponse(err, respond)
-      }
+      errorResponse(err, respond)
     })
   } else {
     // nothing to do
