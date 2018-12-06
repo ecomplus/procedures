@@ -12,6 +12,7 @@ const BuyersAdd = require(process.cwd() + '/lib/Api/Orders/Buyers/Add')
 const BuyersRemove = require(process.cwd() + '/lib/Api/Orders/Buyers/Remove')
 const ItemsAdd = require(process.cwd() + '/lib/Api/Orders/Items/Add')
 const ItemsRemove = require(process.cwd() + '/lib/Api/Orders/Items/Remove')
+const StatusFix = require(process.cwd() + '/lib/Api/Orders/Status/Fix')
 
 const POST = (id, meta, trigger, respond, storeId, appSdk) => {
   const { object, objectId } = triggerParse(trigger)
@@ -22,6 +23,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
       let resCode = 1
 
       // check trigger method to proceed with functions
+      let handleFix = true
       switch (trigger.method) {
         case 'POST':
           // new order or nested objects subresource
@@ -42,6 +44,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
             resCode = 102
           } else {
             // check for specific order item partially edited
+            // also check for status chages
             // ignore specific buyer edition if any (nothing to do)
             ItemsRemove(client, object)
               .then(ItemsAdd)
@@ -68,6 +71,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
             BuyersRemove(client, object, true)
               .then(ItemsRemove)
             resCode = 105
+            handleFix = false
           } else {
             // check for specific order item or buyer removed
             BuyersRemove(client, object)
@@ -75,6 +79,11 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
             resCode = 106
           }
           break
+      }
+
+      if (handleFix) {
+        // fix payment, shipping and order status if relevant changes were made
+        StatusFix(client, object)
       }
 
       // end current request with success
