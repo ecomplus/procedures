@@ -22,10 +22,10 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
       const client = { appSdk, storeId, auth }
       let resCode = 1
 
-      // check trigger method to proceed with functions
+      // check trigger action to proceed with functions
       let handleFix = true
-      switch (trigger.method) {
-        case 'POST':
+      switch (trigger.action) {
+        case 'create':
           // new order or nested objects subresource
           // same handler
           // check for new order items and buyers
@@ -34,10 +34,11 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           resCode = 101
           break
 
-        case 'PATCH':
+        case 'change':
           if (!trigger.subresource) {
-            // order partially edited
-            BuyersRemove(client, object)
+            // order partially edited or entire reseted
+            // removeAll = true
+            BuyersRemove(client, object, true)
               .then(BuyersAdd)
               .then(ItemsRemove)
               .then(ItemsAdd)
@@ -52,19 +53,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           }
           break
 
-        case 'PUT':
-          if (!trigger.subresource) {
-            // entire order reseted
-            // removeAll = true
-            BuyersRemove(client, object, true)
-              .then(BuyersAdd)
-              .then(ItemsRemove)
-              .then(ItemsAdd)
-            resCode = 104
-          }
-          break
-
-        case 'DELETE':
+        case 'delete':
           if (!trigger.subresource) {
             // order removed
             // removeAll = true
