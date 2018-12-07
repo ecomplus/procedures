@@ -56,10 +56,12 @@ ecomAuth.then(appSdk => {
       if (verb !== 'GET' && process.env.NODE_ENV === 'production') {
         // check if request comes from E-Com Plus Webhooks server
         logger.log(req.headers['x-real-ip'])
+        /*
         if (ecomServerIps.indexOf(req.headers['x-real-ip']) === -1) {
           respond({}, null, 403, 192, 'Who are you? Unauthorized IP address')
           return
         }
+        */
       }
       // pass to endpoint
       endpoint(id, meta, body, respond, storeId, appSdk)
