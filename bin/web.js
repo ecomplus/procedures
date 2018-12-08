@@ -54,7 +54,7 @@ ecomAuth.then(appSdk => {
       respond({}, null, 403, 191, 'Undefined or invalid Store ID')
     } else {
       if (verb !== 'GET' && process.env.NODE_ENV === 'production') {
-        // check if request comes from E-Com Plus Webhooks server
+        // check if request comes from E-Com Plus servers
         if (ecomServerIps.indexOf(req.headers['x-real-ip']) === -1) {
           respond({}, null, 403, 192, 'Who are you? Unauthorized IP address')
           return
