@@ -20,7 +20,8 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
     // get authentication tokens
     appSdk.getAuth(storeId).then(auth => {
       const client = { appSdk, storeId, auth }
-      let promise = QuantityFix(client, object).then(PriceFix)
+      const product = object
+      let promise = QuantityFix({ client, product }).then(PriceFix)
       if (trigger.subresource) {
         // alse handle history records fix
         promise.then(HistoryFix)

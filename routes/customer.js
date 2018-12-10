@@ -18,7 +18,8 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
     // get authentication tokens
     appSdk.getAuth(storeId).then(auth => {
       const client = { appSdk, storeId, auth }
-      promiseHandler(OrdersFix(client, object), respond)
+      const customer = object
+      promiseHandler(OrdersFix({ client, customer }), respond)
 
       // end current request with success
       respond(201)

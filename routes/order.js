@@ -22,6 +22,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
     // get authentication tokens
     appSdk.getAuth(storeId).then(auth => {
       const client = { appSdk, storeId, auth }
+      const order = object
       let resCode = 1
 
       // check trigger action to proceed with functions
@@ -32,7 +33,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // new order or nested objects subresource
           // same handler
           // check for new order items and buyers
-          promise = ItemsAdd(client, object)
+          promise = ItemsAdd({ client, order })
             .then(BuyersAdd)
           resCode = 101
           break
@@ -40,8 +41,8 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
         case 'change':
           if (!trigger.subresource) {
             // order partially edited or entire reseted
-            // removeAll = true
-            promise = BuyersRemove(client, object, true)
+            let removeAll = true
+            promise = BuyersRemove({ client, order, removeAll })
               .then(BuyersAdd)
               .then(ItemsRemove)
               .then(ItemsAdd)
@@ -50,7 +51,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
             // check for specific order item partially edited
             // also check for status chages
             // ignore specific buyer edition if any (nothing to do)
-            promise = ItemsRemove(client, object)
+            promise = ItemsRemove({ client, order })
               .then(ItemsAdd)
             resCode = 103
           }
@@ -59,14 +60,14 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
         case 'delete':
           if (!trigger.subresource) {
             // order removed
-            // removeAll = true
-            promise = BuyersRemove(client, object, true)
+            let removeAll = true
+            promise = BuyersRemove({ client, order, removeAll })
               .then(ItemsRemove)
             resCode = 105
             handleFix = false
           } else {
             // check for specific order item or buyer removed
-            promise = BuyersRemove(client, object)
+            promise = BuyersRemove({ client, order })
               .then(ItemsRemove)
             resCode = 106
           }
@@ -76,7 +77,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
 
       if (handleFix) {
         // fix payment, shipping and order status if relevant changes were made
-        promiseHandler(StatusFix(client, object), respond)
+        promiseHandler(StatusFix({ client, order }), respond)
       }
 
       // end current request with success
