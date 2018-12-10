@@ -1,7 +1,7 @@
 'use strict'
 
 // log on files
-// const logger = require('console-files')
+const logger = require('console-files')
 // treat error and respond
 const errorResponse = require('./#error')()
 // treat promises
@@ -34,7 +34,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // check for new order items and buyers
           promise = ItemsAdd(client, object)
             .then((client, order, removeAll, appConfig) => {
-              console.log(order)
+              logger.log(order)
               BuyersAdd(client, order)
             })
           resCode = 101
