@@ -34,7 +34,9 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // check for new order items and buyers
           promise = ItemsAdd(client, object)
             .then((client, order, removeAll, appConfig) => {
+              logger.log(client)
               logger.log(order)
+              logger.log(appConfig)
               BuyersAdd(client, order)
             })
           resCode = 101
