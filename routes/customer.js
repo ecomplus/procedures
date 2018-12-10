@@ -4,6 +4,8 @@
 // const logger = require('console-files')
 // treat error and respond
 const errorResponse = require('./#error')()
+// treat promises
+const promiseHandler = require('./#promise')()
 // parse trigger body
 const triggerParse = require(process.cwd() + '/lib/Api/TriggerParse')
 
@@ -16,7 +18,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
     // get authentication tokens
     appSdk.getAuth(storeId).then(auth => {
       const client = { appSdk, storeId, auth }
-      OrdersFix(client, object)
+      promiseHandler(OrdersFix(client, object), respond)
 
       // end current request with success
       respond(201)
