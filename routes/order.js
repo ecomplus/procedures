@@ -1,7 +1,7 @@
 'use strict'
 
 // log on files
-// const logger = require('console-files')
+const logger = require('console-files')
 // treat error and respond
 const errorResponse = require('./#error')()
 // treat promises
@@ -23,6 +23,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
     appSdk.getAuth(storeId).then(auth => {
       const client = { appSdk, storeId, auth }
       const order = object
+      logger.log(order)
       let resCode = 1
 
       // check trigger action to proceed with functions
