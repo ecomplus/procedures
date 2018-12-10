@@ -33,7 +33,10 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // same handler
           // check for new order items and buyers
           promise = ItemsAdd(client, object)
-            .then(BuyersAdd)
+            .then((client, order, removeAll, appConfig) => {
+              console.log(order)
+              BuyersAdd(client, order)
+            })
           resCode = 101
           break
 
