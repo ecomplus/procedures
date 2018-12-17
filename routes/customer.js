@@ -1,7 +1,7 @@
 'use strict'
 
 // log on files
-const logger = require('console-files')
+// const logger = require('console-files')
 // treat error and respond
 const errorResponse = require('./#error')()
 // treat promises
@@ -20,9 +20,8 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
       const client = { appSdk, storeId, auth }
       const customer = object
       // logger.log(customer)
-      promiseHandler(OrdersFix({ client, customer }).then(() => {
-        logger.log('resolved')
-      }), respond)
+      let promise = OrdersFix({ client, customer })
+      promiseHandler(promise, respond)
 
       // end current request with success
       respond(201)

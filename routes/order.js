@@ -80,7 +80,8 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
 
       if (handleFix) {
         // fix payment, shipping and order status if relevant changes were made
-        promiseHandler(StatusFix({ client, order }), respond)
+        let promise = StatusFix({ client, order })
+        promiseHandler(promise, respond)
       }
 
       // end current request with success
