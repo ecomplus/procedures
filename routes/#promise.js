@@ -17,6 +17,8 @@ const promiseHandler = () => {
     }, 180000)
 
     promise.then(() => {
+      logger.log('timer ' + label)
+      logger.log(timer)
       clearTimeout(timer)
     }).catch(err => {
       // unexpected promise error here
