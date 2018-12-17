@@ -3,12 +3,7 @@
 // log on files
 const logger = require('console-files')
 
-const promiseHandler = () => {
-  // label is the current parent filename without extension
-  // eg.: new_order
-  const label = module.parent.filename.split('/').pop().slice(0, -3)
-  logger.log(label)
-
+const promiseHandler = label => {
   return (promise, respond) => {
     // watch promise with timeout
     let timer = setTimeout(() => {
@@ -18,8 +13,6 @@ const promiseHandler = () => {
     }, 180000)
 
     promise.then(() => {
-      logger.log('timer ' + label)
-      logger.log(timer)
       clearTimeout(timer)
     }).catch(err => {
       // unexpected promise error here

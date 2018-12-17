@@ -3,11 +3,7 @@
 // log on files
 const logger = require('console-files')
 
-const errorResponse = () => {
-  // label is the current parent filename without extension
-  // eg.: new_order
-  const label = module.parent.filename.split('/').pop().slice(0, -3)
-
+const errorResponse = label => {
   return (err, respond) => {
     // treat axios error
     let { code, message, response } = err

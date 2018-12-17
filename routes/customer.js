@@ -1,11 +1,12 @@
 'use strict'
 
+const label = 'customer'
 // log on files
-const logger = require('console-files')
+// const logger = require('console-files')
 // treat error and respond
-const errorResponse = require('./#error')()
+const errorResponse = require('./#error')(label)
 // treat promises
-const promiseHandler = require('./#promise')()
+const promiseHandler = require('./#promise')(label)
 // parse trigger body
 const triggerParse = require(process.cwd() + '/lib/Api/TriggerParse')
 
@@ -19,12 +20,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
     appSdk.getAuth(storeId).then(auth => {
       const client = { appSdk, storeId, auth }
       const customer = object
-      logger.log(customer)
-      let promise = OrdersFix({ client, customer })
-      promise.then(() => {
-        logger.log('customer promise resolved !!')
-      })
-      promiseHandler(promise, respond)
+      promiseHandler(OrdersFix({ client, customer }), respond)
 
       // end current request with success
       respond(201)

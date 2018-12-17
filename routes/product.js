@@ -1,11 +1,12 @@
 'use strict'
 
+const label = 'product'
 // log on files
 // const logger = require('console-files')
 // treat error and respond
-const errorResponse = require('./#error')()
+const errorResponse = require('./#error')(label)
 // treat promises
-const promiseHandler = require('./#promise')()
+const promiseHandler = require('./#promise')(label)
 // parse trigger body
 const triggerParse = require(process.cwd() + '/lib/Api/TriggerParse')
 

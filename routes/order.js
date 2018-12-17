@@ -1,11 +1,12 @@
 'use strict'
 
+const label = 'order'
 // log on files
 const logger = require('console-files')
 // treat error and respond
-const errorResponse = require('./#error')()
+const errorResponse = require('./#error')(label)
 // treat promises
-const promiseHandler = require('./#promise')()
+const promiseHandler = require('./#promise')(label)
 // parse trigger body
 const triggerParse = require(process.cwd() + '/lib/Api/TriggerParse')
 
@@ -81,8 +82,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
 
       if (handleFix) {
         // fix payment, shipping and order status if relevant changes were made
-        let promise = StatusFix({ client, order })
-        promiseHandler(promise, respond)
+        promiseHandler(StatusFix({ client, order }), respond)
       }
 
       // end current request with success
