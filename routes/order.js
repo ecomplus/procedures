@@ -1,7 +1,7 @@
 'use strict'
 
 // log on files
-// const logger = require('console-files')
+const logger = require('console-files')
 // treat error and respond
 const errorResponse = require('./#error')()
 // treat promises
@@ -35,6 +35,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // new order or nested objects subresource
           // same handler
           // check for new order items and buyers
+          logger.log('new order')
           promise = ItemsAdd({ client, order })
             .then(BuyersAdd)
             .then(TransactionsAdd)
