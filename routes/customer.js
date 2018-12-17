@@ -21,7 +21,9 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
       const customer = object
       logger.log(customer)
       let promise = OrdersFix({ client, customer })
-      promise.then('customer promise resolved !!')
+      promise.then(() => {
+        logger.log('customer promise resolved !!')
+      })
       promiseHandler(promise, respond)
 
       // end current request with success
