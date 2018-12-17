@@ -7,6 +7,7 @@ const promiseHandler = () => {
   // label is the current parent filename without extension
   // eg.: new_order
   const label = module.parent.filename.split('/').pop().slice(0, -3)
+  logger.log(label)
 
   return (promise, respond) => {
     // watch promise with timeout
