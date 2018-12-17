@@ -14,6 +14,7 @@ const BuyersAdd = require(process.cwd() + '/lib/Api/Orders/Buyers/Add')
 const BuyersRemove = require(process.cwd() + '/lib/Api/Orders/Buyers/Remove')
 const ItemsAdd = require(process.cwd() + '/lib/Api/Orders/Items/Add')
 const ItemsRemove = require(process.cwd() + '/lib/Api/Orders/Items/Remove')
+const TransactionsAdd = require(process.cwd() + '/lib/Api/Orders/Transactions/Add')
 const StatusFix = require(process.cwd() + '/lib/Api/Orders/Status/Fix')
 
 const POST = (id, meta, trigger, respond, storeId, appSdk) => {
@@ -36,6 +37,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // check for new order items and buyers
           promise = ItemsAdd({ client, order })
             .then(BuyersAdd)
+            .then(TransactionsAdd)
           resCode = 101
           break
 
