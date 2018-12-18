@@ -2,7 +2,7 @@
 
 const label = 'order'
 // log on files
-const logger = require('console-files')
+// const logger = require('console-files')
 // treat error and respond
 const errorResponse = require('./#error')(label)
 // treat promises
@@ -37,14 +37,8 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // same handler
           // check for new order items and buyers
           promise = ItemsAdd({ client, order })
-            .then(obj => {
-              logger.log('1. order items add resolved')
-              BuyersAdd(obj)
-            })
-            .then(obj => {
-              logger.log('2. order buyers add resolved')
-              TransactionsAdd(obj)
-            })
+            .then(BuyersAdd)
+            .then(TransactionsAdd)
           resCode = 101
           break
 
