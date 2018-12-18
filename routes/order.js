@@ -2,7 +2,7 @@
 
 const label = 'order'
 // log on files
-const logger = require('console-files')
+// const logger = require('console-files')
 // treat error and respond
 const errorResponse = require('./#error')(label)
 // treat promises
@@ -25,7 +25,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
     appSdk.getAuth(storeId).then(auth => {
       const client = { appSdk, storeId, auth }
       const order = object
-      logger.log(order)
+      // logger.log(order)
       let resCode = 1
 
       // check trigger action to proceed with functions
@@ -35,7 +35,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
         case 'create':
           // new order or nested objects subresource
           // same handler
-          // check for new order items and buyers
+          // check for new order items, buyers and transactions
           promise = ItemsAdd({ client, order })
             .then(BuyersAdd)
             .then(TransactionsAdd)
@@ -45,7 +45,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
         case 'change':
           if (!trigger.subresource) {
             // order partially edited or entire reseted
-            let removeAll = true
+            let removeAll = (trigger.method === 'PUT')
             promise = BuyersRemove({ client, order, removeAll })
               .then(BuyersAdd)
               .then(ItemsRemove)
@@ -67,13 +67,13 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
             let removeAll = true
             promise = BuyersRemove({ client, order, removeAll })
               .then(ItemsRemove)
-            resCode = 105
+            resCode = 104
             handleFix = false
           } else {
             // check for specific order item or buyer removed
             promise = BuyersRemove({ client, order })
               .then(ItemsRemove)
-            resCode = 106
+            resCode = 105
           }
           break
       }
