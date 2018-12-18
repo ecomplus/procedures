@@ -45,19 +45,26 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
         case 'change':
           if (!trigger.subresource) {
             // order partially edited or entire reseted
-            let removeAll = (trigger.method === 'PUT')
+            let removeAll
+            if (trigger.method === 'PUT') {
+              removeAll = false
+              resCode = 102
+            } else {
+              // reset all
+              removeAll = true
+              resCode = 103
+            }
             promise = BuyersRemove({ client, order, removeAll })
               .then(BuyersAdd)
               .then(ItemsRemove)
               .then(ItemsAdd)
-            resCode = 102
           } else {
             // check for specific order item partially edited
             // also check for status chages
             // ignore specific buyer edition if any (nothing to do)
             promise = ItemsRemove({ client, order })
               .then(ItemsAdd)
-            resCode = 103
+            resCode = 104
           }
           break
 
@@ -67,13 +74,13 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
             let removeAll = true
             promise = BuyersRemove({ client, order, removeAll })
               .then(ItemsRemove)
-            resCode = 104
+            resCode = 105
             handleFix = false
           } else {
             // check for specific order item or buyer removed
             promise = BuyersRemove({ client, order })
               .then(ItemsRemove)
-            resCode = 105
+            resCode = 106
           }
           break
       }
