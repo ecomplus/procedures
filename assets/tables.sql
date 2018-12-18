@@ -6,8 +6,10 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   `product_id` CHAR(24) NOT NULL,
   `variation_id` CHAR(24) NOT NULL,
   `quantity` DECIMAL(11,4) NOT NULL DEFAULT 0,
+  `quantity_removed` TINYINT NOT NULL DEFAULT 0,
   `price` DECIMAL(14,5) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`order_id`, `product_id`, `variation_id`)
+  PRIMARY KEY (`order_id`, `product_id`, `variation_id`),
+  INDEX (`quantity_removed`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `order_buyers` (
