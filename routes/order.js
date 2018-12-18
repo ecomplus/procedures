@@ -46,7 +46,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           if (!trigger.subresource) {
             // order partially edited or entire reseted
             let removeAll
-            if (trigger.method === 'PUT') {
+            if (trigger.method === 'PATCH') {
               removeAll = false
               resCode = 102
             } else {
