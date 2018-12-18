@@ -36,10 +36,15 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // new order or nested objects subresource
           // same handler
           // check for new order items and buyers
-          logger.log('new order')
           promise = ItemsAdd({ client, order })
-            .then(BuyersAdd)
-            .then(TransactionsAdd)
+            .then(obj => {
+              logger.log('1. order items add resolved')
+              BuyersAdd(obj)
+            })
+            .then(obj => {
+              logger.log('2. order buyers add resolved')
+              TransactionsAdd(obj)
+            })
           resCode = 101
           break
 
