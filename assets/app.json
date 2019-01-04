@@ -85,6 +85,18 @@
 	    "POST",
 	    "DELETE"
 	  ],
+		"orders/transactions": [
+	    "GET",
+	    "POST",
+			"PATCH",
+	    "DELETE"
+	  ],
+		"orders/shipping_lines": [
+	    "GET",
+	    "POST",
+			"PATCH",
+	    "DELETE"
+	  ],
 	  "procedures": [
 	    "POST"
 	  ],
