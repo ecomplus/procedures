@@ -20,3 +20,13 @@ Variable              | Value
 `DB_PASSWORD`         | `dbpassword`
 `ECOM_AUTH_DB`        | `~/app/db.sqlite`
 `APP_BASE_URI`        | `https://app.ecomplus.biz/api/v1`
+
+## Production server
+
+Published at https://cpm.ecomplus.biz
+
+### Continuous deployment
+
+When app version is **production ready**,
+[create a new release](https://github.com/ecomclub/procedures/releases)
+to run automatic deploy from `master` branch.
