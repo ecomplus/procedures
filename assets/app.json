@@ -75,7 +75,7 @@
 	    "POST",
 	    "DELETE"
 	  ],
-	  "orders/fullfilments": [
+	  "orders/fulfillments": [
 	    "GET",
 	    "POST",
 	    "DELETE"
