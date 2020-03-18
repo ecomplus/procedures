@@ -1,6 +1,6 @@
 # procedures
 
-[![CodeFactor](https://www.codefactor.io/repository/github/ecomclub/procedures/badge)](https://www.codefactor.io/repository/github/ecomclub/procedures)
+[![CodeFactor](https://www.codefactor.io/repository/github/ecomplus/procedures/badge)](https://www.codefactor.io/repository/github/ecomplus/procedures)
 [![license gpl](https://img.shields.io/badge/License-Apache-orange.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Common Procedures Manager
@@ -28,5 +28,5 @@ Published at https://cpm.ecomplus.biz
 ### Continuous deployment
 
 When app version is **production ready**,
-[create a new release](https://github.com/ecomclub/procedures/releases)
+[create a new release](https://github.com/ecomplus/procedures/releases)
 to run automatic deploy from `master` branch.
