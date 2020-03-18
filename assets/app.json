@@ -3,7 +3,7 @@
 	"state": "active",
 	"title": "Common Procedures Manager",
 	"slug": "cpm",
-	"version": "0.3.0",
+	"version": "1.0.0",
 	"type": "external",
 	"authentication": true,
 	"auth_callback_uri": "https://cpm.ecomplus.biz/api/v1/_callback.json",
