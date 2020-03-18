@@ -4,22 +4,24 @@
   "description": "Handle the most common E-Com Plus Store API procedures",
   "main": "main.js",
   "scripts": {
-    "test": "node ./main.js"
+    "test": "node ./main.js",
+    "release": "standard-version"
   },
   "author": "E-Com Club",
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
-    "rest-auto-router": "3.x",
+    "@ecomplus/application-sdk": "^1.11.7",
     "console-files": "2.x",
-    "ecomplus-app-sdk": "1.x",
-    "mysql": "2.x"
+    "mysql": "2.x",
+    "rest-auto-router": "3.x"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "husky": "^1.3.1",
-    "standard": "*"
+    "standard": "*",
+    "standard-version": "^7.1.0"
   },
   "husky": {
     "hooks": {
