@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/ecomplus/procedures/compare/v0.3.1...v0.3.2) (2020-03-18)
+
+
+### Bug Fixes
+
+* **deps:** update/fix direct pkg dependencies ([77858e8](https://github.com/ecomplus/procedures/commit/77858e840596914618d79b10e6375575226d5d25))
+
 ### [0.3.1](https://github.com/ecomplus/procedures/compare/v0.3.0...v0.3.1) (2020-03-18)
 
 
