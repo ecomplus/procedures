@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.6](https://github.com/ecomplus/procedures/compare/v0.3.5...v0.3.6) (2020-04-08)
+
+
+### Bug Fixes
+
+* **order-new-record:** prevent duplicating status record first flags ([2916d51](https://github.com/ecomplus/procedures/commit/2916d51e6e3d9dc7574386c300830f4b487d0993))
+
 ### [0.3.5](https://github.com/ecomplus/procedures/compare/v0.3.4...v0.3.5) (2020-04-08)
 
 
