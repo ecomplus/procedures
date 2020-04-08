@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://github.com/ecomplus/procedures/compare/v0.3.3...v0.3.4) (2020-04-08)
+
+
+### Bug Fixes
+
+* **order-status:** fix handling status records flags ([364237c](https://github.com/ecomplus/procedures/commit/364237cf765bbfb7d6c4a36e513fed1c844d89f8))
+* **order-status:** only one 'cpm:post' flag on new record created ([2be56bb](https://github.com/ecomplus/procedures/commit/2be56bb165a7184e821ff972a8114f9c59852772))
+
 ### [0.3.3](https://github.com/ecomplus/procedures/compare/v0.3.2...v0.3.3) (2020-04-08)
 
 
