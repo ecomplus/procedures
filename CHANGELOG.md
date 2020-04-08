@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.8](https://github.com/ecomplus/procedures/compare/v0.3.7...v0.3.8) (2020-04-08)
+
+
+### Bug Fixes
+
+* **order-new-record:** fix adding new flag to existent flags array ([58f0c30](https://github.com/ecomplus/procedures/commit/58f0c30d0d687d385bbe29bd72a35ac935b6ad7c))
+
 ### [0.3.7](https://github.com/ecomplus/procedures/compare/v0.3.6...v0.3.7) (2020-04-08)
 
 
