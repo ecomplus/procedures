@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://github.com/ecomplus/procedures/compare/v0.3.6...v0.3.7) (2020-04-08)
+
+
+### Bug Fixes
+
+* **order-new-record:** using array map to records field with fixed flags ([3083b85](https://github.com/ecomplus/procedures/commit/3083b8557faa70c8626b06cf29f862c24c99f5d0))
+
 ### [0.3.6](https://github.com/ecomplus/procedures/compare/v0.3.5...v0.3.6) (2020-04-08)
 
 
