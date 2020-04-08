@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.5](https://github.com/ecomplus/procedures/compare/v0.3.4...v0.3.5) (2020-04-08)
+
+
+### Bug Fixes
+
+* **deps:** update @ecomplus/application-sdk to v1.11.9 ([fedd529](https://github.com/ecomplus/procedures/commit/fedd529e7c44d273c0e1bbe3af5f1d533b76693a))
+* **order-new-record:** add records field to order edit data ([7032a73](https://github.com/ecomplus/procedures/commit/7032a732bf18821912b1300eb6104ac2cbbc949b))
+* **order-new-record:** debug update record request error ([20114bc](https://github.com/ecomplus/procedures/commit/20114bcab8ecf9b62dd2f49b0ff7785afde3e9b1))
+
 ### [0.3.4](https://github.com/ecomplus/procedures/compare/v0.3.3...v0.3.4) (2020-04-08)
 
 
