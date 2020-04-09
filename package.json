@@ -1,6 +1,6 @@
 {
   "name": "ecomplus-procedures",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Handle the most common E-Com Plus Store API procedures",
   "main": "main.js",
   "scripts": {
