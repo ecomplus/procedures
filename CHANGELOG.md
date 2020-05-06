@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/ecomplus/procedures/compare/v1.0.0...v1.0.1) (2020-05-06)
+
+
+### Bug Fixes
+
+* **order-status:** prevent reopenning previously cancelled order ([c99ce0d](https://github.com/ecomplus/procedures/commit/c99ce0df8c9d084fc00923eb0b8ca63d3d0be1ea))
+* **order-status:** prevent reopenning previously cancelled order (main) ([6649b57](https://github.com/ecomplus/procedures/commit/6649b570f5bb5f27d3ff5ef1a7d7f1c400fcd788))
+
 ## [1.0.0](https://github.com/ecomplus/procedures/compare/v0.3.11...v1.0.0) (2020-04-10)
 
 ### [0.3.11](https://github.com/ecomplus/procedures/compare/v0.3.10...v0.3.11) (2020-04-10)
