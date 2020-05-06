@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/ecomplus/procedures/compare/v1.0.1...v1.0.2) (2020-05-06)
+
+
+### Bug Fixes
+
+* **order-status:** skip editing main status if cancelled by customer ([2e4f0ce](https://github.com/ecomplus/procedures/commit/2e4f0cee4951238619d85d909ec0d941f9048b6b))
+
 ### [1.0.1](https://github.com/ecomplus/procedures/compare/v1.0.0...v1.0.1) (2020-05-06)
 
 
