@@ -12,11 +12,11 @@
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
-    "@ecomplus/application-sdk": "^1.11.9",
+    "@ecomplus/application-sdk": "^1.11.13",
     "console-files": "2.x",
     "mysql": "2.x",
     "rest-auto-router": "3.x",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^4.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
