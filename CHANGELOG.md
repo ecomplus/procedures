@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/ecomplus/procedures/compare/v1.0.2...v1.0.3) (2020-05-22)
+
+
+### Bug Fixes
+
+* **deps:** update to @ecomplus/application-sdk@sqlite ([a64abb5](https://github.com/ecomplus/procedures/commit/a64abb5290db938735057a104e3a65d6919731c2))
+
 ### [1.0.2](https://github.com/ecomplus/procedures/compare/v1.0.1...v1.0.2) (2020-05-06)
 
 
