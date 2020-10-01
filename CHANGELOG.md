@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/ecomplus/procedures/compare/v1.0.3...v1.0.4) (2020-10-01)
+
+
+### Bug Fixes
+
+* **order-items:** fix selecting items to delete/update on changes ([b5df78d](https://github.com/ecomplus/procedures/commit/b5df78d80b6a7e1c6f209488c5d50a4876ba2bf2))
+
 ### [1.0.3](https://github.com/ecomplus/procedures/compare/v1.0.2...v1.0.3) (2020-05-22)
 
 
