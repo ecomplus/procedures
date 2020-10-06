@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/ecomplus/procedures/compare/v1.0.4...v1.0.5) (2020-10-06)
+
+
+### Bug Fixes
+
+* **transaction-status:** no partial status for transactions ([a5e61a7](https://github.com/ecomplus/procedures/commit/a5e61a7ab09f0dcc0fc4e72b488eeec11d8334bf))
+
 ### [1.0.4](https://github.com/ecomplus/procedures/compare/v1.0.3...v1.0.4) (2020-10-01)
 
 
