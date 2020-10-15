@@ -4,11 +4,14 @@
 const logger = require('console-files')
 
 const promiseHandler = label => {
-  return (promise, respond) => {
+  return (promise, respond, payload) => {
     // watch promise with timeout
-    let timer = setTimeout(() => {
-      let msg = 'Promise not done after 3 minutes on route ' + label
-      let err = new Error(msg)
+    const timer = setTimeout(() => {
+      const msg = 'Promise not done after 3 minutes on route ' + label
+      const err = new Error(msg)
+      if (payload) {
+        err.payload = JSON.stringify(payload, null, 2)
+      }
       logger.error(err)
     }, 180000)
 
