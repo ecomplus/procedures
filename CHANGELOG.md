@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.7](https://github.com/ecomplus/procedures/compare/v1.0.6...v1.0.7) (2020-10-15)
+
+
+### Bug Fixes
+
+* **api-requests:** hardset timeouts for products read requests ([09342f7](https://github.com/ecomplus/procedures/commit/09342f73b22c641a33ac0375fee61e1986269fc8))
+* **deps:** update @ecomplus/application-sdk to v11.0.0-sqlite.1.14.0 ([095347d](https://github.com/ecomplus/procedures/commit/095347dc6680c15b4e028bba0c8a6ad455228a56))
+
 ### [1.0.6](https://github.com/ecomplus/procedures/compare/v1.0.5...v1.0.6) (2020-10-07)
 
 
