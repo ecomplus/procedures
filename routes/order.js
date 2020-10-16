@@ -31,9 +31,9 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
       // check trigger action to proceed with functions
       let handleFix = true
       let promise
-      let promisesCount = 0
+      const promisesCount = { n: 0 }
       const proceed = (payload, nextPromise) => {
-        promisesCount++
+        promisesCount.n++
         return nextPromise(payload)
       }
 
