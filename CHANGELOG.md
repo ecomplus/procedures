@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.8](https://github.com/ecomplus/procedures/compare/v1.0.7...v1.0.8) (2020-10-16)
+
+
+### Bug Fixes
+
+* **promise-debug:** fix setting payload json (no format) ([52ffc2c](https://github.com/ecomplus/procedures/commit/52ffc2c66e6282444df296024c8e784bec238d8f))
+* **remove-order-buyers:** fix remove buyer order endpoint ([f92e8b2](https://github.com/ecomplus/procedures/commit/f92e8b2793e60cc847c72a614d8aa22107443ae0))
+
 ### [1.0.7](https://github.com/ecomplus/procedures/compare/v1.0.6...v1.0.7) (2020-10-15)
 
 
