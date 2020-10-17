@@ -7,13 +7,21 @@ const promiseHandler = label => {
   return (promise, respond, payload) => {
     // watch promise with timeout
     const timer = setTimeout(() => {
-      const msg = 'Promise not done after 10 minutes on route ' + label
+      const msg = 'Promise not done after 5 minutes on route ' + label
       const err = new Error(msg)
+      err.time = new Date().toISOString()
       if (payload) {
         err.payload = JSON.stringify(payload)
       }
       logger.error(err)
-    }, 600000)
+
+      // still debugging promise end
+      promise.then(() => {
+        const err = new Error('Promise resolved after timeout')
+        err.time = new Date().toISOString()
+        logger.error(err)
+      })
+    }, 300000)
 
     promise.then(() => {
       clearTimeout(timer)
