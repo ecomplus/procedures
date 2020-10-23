@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.15](https://github.com/ecomplus/procedures/compare/v1.0.14...v1.0.15) (2020-10-23)
+
+
+### Bug Fixes
+
+* **order-status-map:** add 'unauthorized' to cancelled map ([50fc4ac](https://github.com/ecomplus/procedures/commit/50fc4ac0b106a5b5d2f0c15566fedf9035e2bbb2))
+
 ### [1.0.14](https://github.com/ecomplus/procedures/compare/v1.0.13...v1.0.14) (2020-10-17)
 
 ### [1.0.13](https://github.com/ecomplus/procedures/compare/v1.0.12...v1.0.13) (2020-10-17)
