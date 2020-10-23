@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.16](https://github.com/ecomplus/procedures/compare/v1.0.15...v1.0.16) (2020-10-23)
+
+
+### Bug Fixes
+
+* **remove-order-items:** check if order.items is array to try item find ([ed18f1c](https://github.com/ecomplus/procedures/commit/ed18f1c9b11f8bff2de914081680776a0d0b9e6d))
+
 ### [1.0.15](https://github.com/ecomplus/procedures/compare/v1.0.14...v1.0.15) (2020-10-23)
 
 
