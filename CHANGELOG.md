@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.19](https://github.com/ecomplus/procedures/compare/v1.0.18...v1.0.19) (2020-10-30)
+
+
+### Bug Fixes
+
+* **add-order-items:** run all without checking rows if 'addAll' only ([8a261e1](https://github.com/ecomplus/procedures/commit/8a261e18421acdbf7c6cede22fff7181f3934bfb))
+* **orders-webhooks:** set 'addAll' for new orders ([a6f15af](https://github.com/ecomplus/procedures/commit/a6f15af67749b5fb3099227f7ccda07f5dcb9a74))
+* **remove-order-items:** fix awaiting update product and query promise ([e0d20a1](https://github.com/ecomplus/procedures/commit/e0d20a175221211b74e23021358804707ba02b8e))
+
 ### [1.0.18](https://github.com/ecomplus/procedures/compare/v1.0.17...v1.0.18) (2020-10-30)
 
 ### [1.0.17](https://github.com/ecomplus/procedures/compare/v1.0.16...v1.0.17) (2020-10-30)
