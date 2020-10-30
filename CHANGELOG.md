@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.20](https://github.com/ecomplus/procedures/compare/v1.0.19...v1.0.20) (2020-10-30)
+
+
+### Bug Fixes
+
+* **add-order-items:** fix mappnig row as item ('item_id' to '_id') ([6481960](https://github.com/ecomplus/procedures/commit/6481960ad37d432e37832aaabd1cf1a63ce87f3b))
+
 ### [1.0.19](https://github.com/ecomplus/procedures/compare/v1.0.18...v1.0.19) (2020-10-30)
 
 
