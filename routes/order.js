@@ -25,6 +25,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
     appSdk.getAuth(storeId).then(auth => {
       const client = { appSdk, storeId, auth }
       const order = object
+      let addAll
       // logger.log(order)
       let resCode = 1
 
@@ -42,7 +43,8 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // new order or nested objects subresource
           // same handler
           // check for new order items, buyers and transactions
-          promise = ItemsAdd({ client, order })
+          addAll = !trigger.subresource
+          promise = ItemsAdd({ client, order, addAll })
             .then(p => proceed(p, BuyersAdd))
             .then(p => proceed(p, TransactionsAdd))
           resCode = 101
@@ -51,16 +53,12 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
         case 'change':
           if (!trigger.subresource) {
             // order partially edited or entire reseted
-            let removeAll
             if (trigger.method === 'PATCH') {
-              removeAll = false
               resCode = 102
             } else {
-              // reset all
-              removeAll = true
               resCode = 103
             }
-            promise = BuyersRemove({ client, order, removeAll })
+            promise = BuyersRemove({ client, order })
               .then(p => proceed(p, BuyersAdd))
               .then(p => proceed(p, ItemsRemove))
               .then(p => proceed(p, ItemsAdd))
