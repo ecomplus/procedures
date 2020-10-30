@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.17](https://github.com/ecomplus/procedures/compare/v1.0.16...v1.0.17) (2020-10-30)
+
+
+### Bug Fixes
+
+* **add-order-items:** fix checking changed items or rows not decreased ([ad1d27c](https://github.com/ecomplus/procedures/commit/ad1d27c6396ee28bb1d478233d0925922ba6c2aa))
+* **order-items:** prevent duplicate inventory reductions on order change ([cb6f67f](https://github.com/ecomplus/procedures/commit/cb6f67f03fed75ee83140e6813a4df8135bf5737))
+* **order-items-add:** must end process when nothing to do ([ac18826](https://github.com/ecomplus/procedures/commit/ac18826c57015a9d2fd1b36da90c5f17d37522a7))
+
 ### [1.0.16](https://github.com/ecomplus/procedures/compare/v1.0.15...v1.0.16) (2020-10-23)
 
 
