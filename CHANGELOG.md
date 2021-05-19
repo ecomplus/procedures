@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.21](https://github.com/ecomplus/procedures/compare/v1.0.20...v1.0.21) (2021-05-19)
+
+
+### Bug Fixes
+
+* **deps:** update @ecomplus/application-sdk to v1.14.11 ([4ac4b35](https://github.com/ecomplus/procedures/commit/4ac4b357055b5e1f09536c6e53eefcc117e6f28a))
+* **orders/new-record:** fix handling partial status ([b0a9654](https://github.com/ecomplus/procedures/commit/b0a9654876c531d46d01ba1b85fc7e8c560461f5))
+
 ### [1.0.20](https://github.com/ecomplus/procedures/compare/v1.0.19...v1.0.20) (2020-10-30)
 
 
