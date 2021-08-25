@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.23](https://github.com/ecomplus/procedures/compare/v1.0.22...v1.0.23) (2021-08-25)
+
+
+### Bug Fixes
+
+* **order-items:** check externally handled stock status ([e166ad9](https://github.com/ecomplus/procedures/commit/e166ad9f48a904b8a22b53aed197ef06c0c27376))
+
 ### [1.0.22](https://github.com/ecomplus/procedures/compare/v1.0.21...v1.0.22) (2021-06-24)
 
 ### [1.0.21](https://github.com/ecomplus/procedures/compare/v1.0.20...v1.0.21) (2021-05-19)
