@@ -44,14 +44,8 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // same handler
           // check for new order items, buyers and transactions
           addAll = !trigger.subresource
-          if (storeId !== 1011) {
-            promise = ItemsAdd({ client, order, addAll })
-              .then(p => proceed(p, BuyersAdd))
-              .then(p => proceed(p, TransactionsAdd))
-          } else {
-            promise = BuyersAdd({ client, order, addAll })
-              .then(p => proceed(p, TransactionsAdd))
-          }
+          promise = BuyersAdd({ client, order, addAll })
+            .then(p => proceed(p, TransactionsAdd))
           resCode = 101
           break
 
