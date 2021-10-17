@@ -16,7 +16,7 @@ const BuyersRemove = require(process.cwd() + '/lib/Api/Orders/Buyers/Remove')
 const ItemsAdd = require(process.cwd() + '/lib/Api/Orders/Items/Add')
 const ItemsRemove = require(process.cwd() + '/lib/Api/Orders/Items/Remove')
 const TransactionsAdd = require(process.cwd() + '/lib/Api/Orders/Transactions/Add')
-// const StatusFix = require(process.cwd() + '/lib/Api/Orders/Status/Fix')
+const StatusFix = require(process.cwd() + '/lib/Api/Orders/Status/Fix')
 
 const POST = (id, meta, trigger, respond, storeId, appSdk) => {
   const { object, objectId } = triggerParse(trigger)
@@ -30,6 +30,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
       let resCode = 1
 
       // check trigger action to proceed with functions
+      let handleFix = false
       let promise
       const promisesCount = { n: 0 }
       const proceed = (payload, nextPromise) => {
@@ -42,6 +43,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // new order or nested objects subresource
           // same handler
           // check for new order items, buyers and transactions
+          handleFix = addAll = !trigger.subresource
           promise = BuyersAdd({ client, order, addAll })
             .then(p => proceed(p, TransactionsAdd))
           resCode = 101
@@ -50,6 +52,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
         case 'change':
           if (!trigger.subresource) {
             // order partially edited or entire reseted
+            handleFix = true
             if (trigger.method === 'PATCH') {
               resCode = 102
             } else {
@@ -76,6 +79,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
             promise = BuyersRemove({ client, order, removeAll })
               .then(p => proceed(p, ItemsRemove))
             resCode = 105
+            handleFix = false
           } else {
             // check for specific order item or buyer removed
             promise = BuyersRemove({ client, order })
@@ -87,6 +91,11 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
 
       const debugPayload = { resCode, promisesCount, storeId, order }
       promiseHandler(promise, respond, debugPayload)
+
+      if (handleFix) {
+        // fix payment, shipping and order status if relevant changes were made
+        promiseHandler(StatusFix({ client, order }), respond, debugPayload)
+      }
 
       // end current request with success
       respond(resCode)
