@@ -30,7 +30,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
       let resCode = 1
 
       // check trigger action to proceed with functions
-      let handleFix = true
+      let handleFix = false
       let promise
       const promisesCount = { n: 0 }
       const proceed = (payload, nextPromise) => {
@@ -43,7 +43,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
           // new order or nested objects subresource
           // same handler
           // check for new order items, buyers and transactions
-          addAll = !trigger.subresource
+          handleFix = addAll = !trigger.subresource
           promise = BuyersAdd({ client, order, addAll })
             .then(p => proceed(p, TransactionsAdd))
           resCode = 101
@@ -52,6 +52,7 @@ const POST = (id, meta, trigger, respond, storeId, appSdk) => {
         case 'change':
           if (!trigger.subresource) {
             // order partially edited or entire reseted
+            handleFix = true
             if (trigger.method === 'PATCH') {
               resCode = 102
             } else {
