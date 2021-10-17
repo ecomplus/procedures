@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.28](https://github.com/ecomplus/procedures/compare/v1.0.27...v1.0.28) (2021-10-17)
+
+
+### Bug Fixes
+
+* **order:** keep status fix without checking records ([debd867](https://github.com/ecomplus/procedures/commit/debd867e39032f003b28b3397db113dc48ee03e6))
+
 ### [1.0.27](https://github.com/ecomplus/procedures/compare/v1.0.26...v1.0.27) (2021-10-17)
 
 
